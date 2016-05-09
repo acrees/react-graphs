@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    build: .
+    volumes:
+      - '.:/usr/src/app'
+    environment:
+      NODE_ENV: 'development'
+    ports:
+      - '8080:8080'
+      - '8081:8081'
