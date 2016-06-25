@@ -62,13 +62,5 @@
   ],
   "uris": [
     "file:///etc/docker.tar.gz"
-  ],
-  "fetch": [
-    {
-      "uri": "file:///etc/docker.tar.gz",
-      "extract": true,
-      "executable": false,
-      "cache": false
-    }
   ]
 }
