@@ -5,11 +5,11 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t acrees/react-graphs .
+    - docker build -t acrees/react-graphs:$(git rev-parse --short HEAD) .
 
 test:
   override:
-    - docker run -d -p 8080:8080 acrees/react-graphs; sleep 30
+    - docker run -d -p 8080:8080 acrees/react-graphs; sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:8080
 
 deployment:
