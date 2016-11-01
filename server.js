@@ -3,12 +3,12 @@ var express = require('express');
 var webpack = require('webpack');
 
 function run(app) {
-  app.get('/', function (req, res) {
+  app.get('/graphs', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
   });
 
   app.listen(8080, function () {
-    console.log('Example app listening on port 8080!');
+    console.log('Listening on port 8080!');
   });
 }
 
@@ -25,7 +25,7 @@ var webpackConf = {
   },
   context: path.resolve(__dirname, 'src/js'),
   entry: './entry.js',
-  output: { path: '/', filename: 'bundle.js' }
+  output: { path: '/', filename: 'graphs/bundle.js' }
 };
 var compiler = webpack(webpackConf);
 
@@ -64,9 +64,9 @@ if(app.get('env') !== 'production') {
       process.exit();
     }
 
-    var fileContent = fs.readFileSync('/bundle.js');
+    var fileContent = fs.readFileSync('/graphs/bundle.js');
 
-    app.get('/bundle.js', function (req, res) {
+    app.get('/graphs/bundle.js', function (req, res) {
       res.writeHead(200, {'Content-Type': 'application/javascript'});
       res.write(fileContent);
       res.end();
